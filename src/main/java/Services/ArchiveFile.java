@@ -8,7 +8,6 @@ import jakarta.persistence.Persistence;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
@@ -20,7 +19,6 @@ public class ArchiveFile implements Archive {
     protected EntityManagerFactory emf = Persistence.createEntityManagerFactory("postgres");
     protected EntityManager em = emf.createEntityManager();
 
-    private File file = new File("./catalogue.csv");
 
     @Override
     public void save(Catalogue catalogue) {
@@ -31,7 +29,7 @@ public class ArchiveFile implements Archive {
     }
 
     @Override
-    public void deleteISBN(int ISBN) {
+    public void deleteISBN(Integer ISBN) {
         try {
             Catalogue catalogue = em.find(Catalogue.class, ISBN);
 
@@ -90,7 +88,7 @@ public class ArchiveFile implements Archive {
     }
 
     @Override
-    public Optional<Catalogue> getISBN(int ISBN) {
+    public Optional<Catalogue> getISBN(Integer ISBN) {
         try {
             var query = em.createNamedQuery("GET_ISBN");
             query.setParameter("ISBN", ISBN);
@@ -104,6 +102,11 @@ public class ArchiveFile implements Archive {
 
     @Override
     public List<Loan> getExpiredLoanedElement() {return List.of();}
+
+    @Override
+    public Optional<Catalogue> getISBN(int ISBN) {
+        return Optional.empty();
+    }
 
     @Override
     public List<Catalogue> getLoanedElement(int id) {return List.of();}

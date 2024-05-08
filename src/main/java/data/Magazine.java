@@ -12,7 +12,7 @@ public class Magazine extends Catalogue {
 
     private Periodicity periodicity;
 
-    public Magazine(int ISBN, String title, LocalDate publicationYear, int pages, Periodicity periodicity) {
+    public Magazine( String title, LocalDate publicationYear, int pages, Periodicity periodicity) {
         super(title, publicationYear, pages);
         this.periodicity = periodicity;
     }

@@ -16,8 +16,7 @@ import java.time.LocalDate;
 public abstract class Catalogue {
     @Id
     @GeneratedValue
-    private static int nextISBN = 1;
-    private int ISBN;
+    private Integer ISBN;
     private String title;
     private LocalDate publicationYear;
     private int pages;
@@ -26,8 +25,6 @@ public abstract class Catalogue {
         this.title = title;
         this.publicationYear = publicationYear;
         this.pages = pages;
-        this.ISBN = nextISBN;
-        nextISBN ++;
     }
 
     public Catalogue() {
@@ -37,7 +34,7 @@ public abstract class Catalogue {
         return ISBN;
     }
 
-    public void setISBN(int ISBN) {
+    public void setISBN(Integer ISBN) {
         this.ISBN = ISBN;
     }
 
@@ -65,13 +62,6 @@ public abstract class Catalogue {
         this.pages = pages;
     }
 
-    public static int getNextISBN() {
-        return nextISBN;
-    }
-
-    public static void setNextISBN(int nextISBN) {
-        Catalogue.nextISBN = nextISBN;
-    }
 
     @Override
     public String toString() {

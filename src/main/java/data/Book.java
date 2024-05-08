@@ -12,7 +12,7 @@ public class Book extends Catalogue {
     private String author;
     private String genre;
 
-    public Book(int ISBN, String title, LocalDate publicationYear, int pages, String genre, String author) {
+    public Book(String title, LocalDate publicationYear, int pages, String genre, String author) {
         super(title, publicationYear, pages);
         this.genre = genre;
         this.author = author;
